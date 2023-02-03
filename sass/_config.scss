@@ -1,0 +1,32 @@
+// --IMPORTING FONTS--
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+
+// --VARIABLES--
+// Primary colors
+$bright-blue: hsl(220, 98%, 61%);
+$check-background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+// Light Theme colors
+$very-light-gray: hsl(0, 0%, 98%);
+$very-light-grayish-blue: hsl(236, 33%, 92%);
+$light-grayish-blue-light: hsl(233, 11%, 84%);
+$dark-grayish-blue-light: hsl(236, 9%, 61%);
+$very-dark-grayish-blue-light: hsl(235, 19%, 35%);
+// Dark Theme colors
+$very-dark-blue: hsl(235, 21%, 11%);
+$very-dark-desaturated-blue: hsl(235, 24%, 19%);
+$light-grayish-blue-dark: hsl(234, 39%, 85%);
+$light-grayish-blue-dark-hover: hsl(236, 33%, 92%);
+$dark-grayish-blue-dark: hsl(234, 11%, 52%);
+$very-dark-grayish-blue-dark: hsl(233, 14%, 35%);
+$very-dark-grayish-blue-dark-hover: hsl(237, 14%, 26%);
+// Other default properties
+$default-font-size: 18px;
+$normal-font-weight: 400;
+$bold-font-weight: 700;
+
+// --GENERIC STYLES--
+svg {
+  path {
+    fill: green;
+  }
+}
