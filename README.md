@@ -57,4 +57,4 @@ Users should be able to:
 
 - Frontend Mentor - [@martinideniam](https://www.frontendmentor.io/profile/martinideniam)
 - Twitter - [@VladislavGorov3](https://twitter.com/VladislavGorov3)
-- Reddit - [@martin__eden__iam](https://www.reddit.com/user/martin__eden__iam)
+- Reddit - [@martin**eden**iam](https://www.reddit.com/user/martin__eden__iam)

@@ -1,0 +1,20 @@
+.todo {
+  &__top-container {
+    min-height: 25vh;
+    padding: 20px 0 120px 0;
+    background: url(../images/bg-mobile-light.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .container {
+      padding-top: 3rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      color: $very-light-gray;
+    }
+  }
+  &__svg {
+    cursor: pointer;
+  }
+}

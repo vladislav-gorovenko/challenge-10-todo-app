@@ -4,7 +4,7 @@
 // --VARIABLES--
 // Primary colors
 $bright-blue: hsl(220, 98%, 61%);
-$check-background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+$check-background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 // Light Theme colors
 $very-light-gray: hsl(0, 0%, 98%);
 $very-light-grayish-blue: hsl(236, 33%, 92%);
@@ -23,10 +23,37 @@ $very-dark-grayish-blue-dark-hover: hsl(237, 14%, 26%);
 $default-font-size: 18px;
 $normal-font-weight: 400;
 $bold-font-weight: 700;
+$default-height: 65px;
+$default-border-radius: 0.5rem;
 
 // --GENERIC STYLES--
-svg {
-  path {
-    fill: green;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: $normal-font-weight;
+  background: $very-light-grayish-blue;
+}
+
+input {
+  cursor: pointer;
+}
+
+input[type="text"] {
+  background: inherit;
+  border: none;
+  outline: none;
+  &:focus {
+    outline: none;
   }
+}
+
+.container {
+  width: 90%;
+  margin: auto;
 }
