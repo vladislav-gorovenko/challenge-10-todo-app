@@ -53,6 +53,10 @@ input[type="text"] {
   }
 }
 
+::placeholder {
+  color: $dark-grayish-blue-light;
+}
+
 .container {
   width: 90%;
   margin: auto;

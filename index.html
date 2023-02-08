@@ -57,57 +57,21 @@
             />
           </div>
           <div class="todo__items-container">
-            <div class="todo__item">
-              <label for="todo__item--checkbox" class="todo__item--label">
-                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9">
-                  <path
-                    fill="none"
-                    stroke="#FFF"
-                    stroke-width="2"
-                    d="M1 4.304L3.696 7l6-6"
-                  />
-                </svg>
-                <input
-                  type="checkbox"
-                  name="todo__item--checkbox"
-                  id="todo__item--checkbox"
-                  class="todo__item--checkbox"
-                />
-              </label>
-              <input
-                type="text"
-                name="todo__item--text"
-                id="todo__item--text"
-                class="todo__item--text"
-              />
-              <svg
-                class="todo__item-svg"
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-              >
-                <path
-                  fill="#494C6B"
-                  fill-rule="evenodd"
-                  d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"
-                />
-              </svg>
-            </div>
+            <div class="todo__items-todos"></div>
             <div class="todo__items-summary">
               <p class="todo__items-action todo__items-action--left">
                 5 items left
               </p>
               <div>
-                <p class="todo__items-action todo__items-action--clear">
-                  Clear
-                </p>
-                <p class="todo__items-action todo__items-action--completed">
-                  Completed
+                <p
+                  class="todo__items-action todo__items-action--clear-completed"
+                >
+                  Clear Completed
                 </p>
               </div>
             </div>
           </div>
-          <div class="todo__filters-contaner">
+          <div class="todo__filters-container">
             <p class="todo__filter--all">All</p>
             <p class="todo__filter--active">Active</p>
             <p class="todo__filter--completed">Completed</p>
@@ -120,5 +84,6 @@
         </div>
       </div>
     </main>
+    <script src="./js/app.js"></script>
   </body>
 </html>
