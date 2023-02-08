@@ -1,5 +1,4 @@
 .todo {
-  height: 300vh;
   &__main-container {
     transform: translateY(-75px);
     .container {
@@ -43,16 +42,17 @@
   }
 
   &__items-summary {
-    border-radius: 0 0 $default-border-radius $default-border-radius;
+    border-radius: $default-border-radius;
     border-bottom: none;
     justify-content: space-between;
     color: $dark-grayish-blue-light;
+
     div {
       display: flex;
     }
-    &:nth-of-type(1) {
-      border-radius: $default-border-radius;
-    }
+  }
+  &__items-todos:has(.todo__item) + .todo__items-summary {
+    border-radius: 0 0 $default-border-radius $default-border-radius;
   }
 
   &__items-action--completed {
@@ -88,14 +88,12 @@
       cursor: pointer;
       overflow: hidden;
       background: transparent;
-      transition: all 0.3s ease-in-out;
-      opacity: 0.5;
+      opacity: 1;
 
       svg {
-        transition: all 0.2s ease-in-out;
+        transition: all 0.3s ease-in-out;
         visibility: hidden;
-        transform: translateY(-100%) translateX(-50%);
-        scale: 0;
+        scale: 2;
       }
 
       &:has(.todo__item--checkbox:checked) {
