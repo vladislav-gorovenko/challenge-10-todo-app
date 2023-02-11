@@ -138,6 +138,7 @@
       }
 
       svg {
+        position: absolute;
         transition: all 0.3s ease-in-out;
         visibility: hidden;
         scale: 2;
@@ -154,7 +155,6 @@
         }
         svg {
           visibility: visible;
-          transform: translateY(0) translateX(0);
           scale: 1;
         }
       }
@@ -170,7 +170,6 @@
         }
         svg {
           visibility: visible;
-          transform: translateY(0) translateX(0);
           scale: 1;
         }
       }
