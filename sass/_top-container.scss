@@ -1,6 +1,7 @@
 .todo {
   &__top-container {
     min-height: 25vh;
+    transition: background 2s ease-in-out;
     padding: 20px 0 120px 0;
     background: url(../images/bg-mobile-light.jpg);
     background-repeat: no-repeat;
@@ -19,10 +20,31 @@
   }
 }
 
+body.night-mode {
+  .todo {
+    &__top-container {
+      background: url(../images/bg-mobile-dark.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+}
+
 @include desktop-size {
   .todo {
     &__top-container {
       background: url(../images/bg-desktop-light.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+  body.night-mode {
+    .todo {
+      &__top-container {
+        background: url(../images/bg-desktop-dark.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
     }
   }
 }

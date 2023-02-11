@@ -16,6 +16,7 @@
   &__filters-container {
     padding: 1rem;
     display: flex;
+    transition: background 0.2s ease-in-out;
     justify-content: flex-start;
     align-items: center;
     background: $very-light-gray;
@@ -101,7 +102,6 @@
       width: 1.6rem;
       cursor: pointer;
       overflow: hidden;
-      background-clip: border-box;
       background: transparent;
       opacity: 1;
 
@@ -119,7 +119,7 @@
         right: 0;
         bottom: 0;
         left: 0;
-        background: black;
+        background: $light-grayish-blue-dark;
         z-index: 1;
         pointer-events: none;
       }
@@ -211,6 +211,77 @@
     }
   }
 }
+
+// night mode
+
+body.night-mode {
+  background: $very-dark-blue;
+  .todo {
+    &__input-container,
+    &__item,
+    &__items-summary,
+    &__filters-container {
+      background: $very-dark-desaturated-blue;
+    }
+
+    &__item {
+      &--label:has(input[type="checkbox"]:checked) + input[type="text"] {
+        color: $very-dark-grayish-blue-dark;
+      }
+    }
+    &__item,
+    &__items-summary {
+      height: $default-height;
+      border-bottom: 0.1px solid $very-dark-grayish-blue-dark;
+    }
+
+    &__items-summary {
+      color: $very-dark-grayish-blue-dark;
+    }
+
+    &__items-action--clear-completed {
+      &:hover {
+        color: $light-grayish-blue-dark-hover;
+      }
+    }
+
+    &__input,
+    &__item {
+      &--text {
+        color: $light-grayish-blue-dark;
+      }
+
+      &--label {
+        &:hover {
+          div {
+            background: $check-background;
+          }
+        }
+
+        div {
+          background: $very-dark-grayish-blue-dark;
+          z-index: 1;
+          pointer-events: none;
+        }
+
+        div::after {
+          background: $very-dark-desaturated-blue;
+        }
+      }
+    }
+
+    &__filters-container {
+      p {
+        color: $very-dark-grayish-blue-dark;
+        &:hover {
+          color: $light-grayish-blue-dark-hover;
+        }
+      }
+    }
+  }
+}
+
+// responsive
 
 @include mobile-size {
   .container {
