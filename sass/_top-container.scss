@@ -18,3 +18,11 @@
     cursor: pointer;
   }
 }
+
+@include desktop-size {
+  .todo {
+    &__top-container {
+      background: url(../images/bg-desktop-light.jpg);
+    }
+  }
+}

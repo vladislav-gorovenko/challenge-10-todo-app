@@ -55,18 +55,30 @@
     border-radius: 0 0 $default-border-radius $default-border-radius;
   }
 
-  &__items-action--completed {
+  &__items-action--clear-completed {
     margin-left: 0.5rem;
+    transition: color ease-in-out 0.2s;
+    cursor: pointer;
+    &:hover {
+      color: $very-dark-grayish-blue-light;
+    }
   }
 
   &__input-container {
     border-radius: 0 0 $default-border-radius $default-border-radius;
   }
 
+  &__items-container {
+    .todo__filters-container {
+      display: none;
+    }
+  }
+
   &__input,
   &__item {
     &--text {
       margin-left: 1rem;
+      margin-right: 1rem;
       font-family: "Josefin Sans", sans-serif;
       color: $very-dark-grayish-blue-light;
       font-size: 1rem;
@@ -78,17 +90,52 @@
     }
 
     &--label {
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
       border: 0.5px solid $light-grayish-blue-dark;
+      border: none;
       border-radius: 50%;
       height: 1.5rem;
       width: 1.6rem;
       cursor: pointer;
       overflow: hidden;
+      background-clip: border-box;
       background: transparent;
       opacity: 1;
+
+      &:hover {
+        div {
+          background: $check-background;
+        }
+      }
+
+      div {
+        position: absolute;
+        transition: background 0.2s ease-in-out;
+        border-radius: 50%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: black;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      div::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        top: 1px;
+        right: 1px;
+        bottom: 1px;
+        left: 1px;
+        background: $very-light-gray;
+        z-index: 1;
+        pointer-events: none;
+      }
 
       svg {
         transition: all 0.3s ease-in-out;
@@ -99,6 +146,12 @@
       &:has(.todo__item--checkbox:checked) {
         background: $check-background;
         opacity: 1;
+        div {
+          visibility: hidden;
+          &::after {
+            visibility: hidden;
+          }
+        }
         svg {
           visibility: visible;
           transform: translateY(0) translateX(0);
@@ -109,6 +162,12 @@
       &:has(.todo__input--checkbox:checked) {
         background: $check-background;
         opacity: 1;
+        div {
+          visibility: hidden;
+          &::after {
+            visibility: hidden;
+          }
+        }
         svg {
           visibility: visible;
           transform: translateY(0) translateX(0);
@@ -142,6 +201,41 @@
       font-size: 1rem;
       font-weight: $bold-font-weight;
       color: $dark-grayish-blue-light;
+    }
+  }
+  &__filter {
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+    &:hover {
+      color: $very-dark-grayish-blue-light;
+    }
+  }
+}
+
+@include mobile-size {
+  .container {
+    max-width: 600px;
+  }
+}
+
+@include desktop-size {
+  .todo {
+    &__items-container {
+      .todo__filters-container {
+        display: flex;
+        height: $default-small-height;
+      }
+    }
+    &__filters-container {
+      display: none;
+    }
+    &__main-container {
+      .container {
+        grid-template-rows: $default-height auto;
+      }
+    }
+    &__items-summary {
+      height: $default-small-height;
     }
   }
 }
