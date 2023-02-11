@@ -2,37 +2,85 @@
 const todoInputTextEl = document.querySelector("#todo__input--text");
 const todoItemsContainerEl = document.querySelector(".todo__items-todos");
 const todoItemsLeftEl = document.querySelector(".todo__items-action--left");
-
-// event listeners
-todoInputTextEl.addEventListener("keypress", (e) => {
-  if (e.key == "Enter") {
-    if (e.target.value.trim() != "") {
-      const identifier = generateRandomIdentifier();
-      createTodoItem(identifier, e.target.value, false);
-      clearInput(e);
-    }
-  }
-});
+const todoInputCheckboxEl = document.querySelector("#todo__input--checkbox");
+const todoFilters = document.querySelectorAll(".todo__filter");
+const clearCompletedBtnEl = document.querySelector(
+  ".todo__items-action--clear-completed"
+);
+const lightModeToggleEl = document.querySelector(".todo__svg");
 
 // displaying all the todos from local storage, if any
 let todoItems = [];
 getTodoItemsFromLocalStorage();
 renderTodoItems();
+updateTodoItemsLeftParameter();
+
+// event listeners
+todoInputTextEl.addEventListener("keypress", (e) => {
+  if (e.key == "Enter" || e.key == "return") {
+    if (e.target.value.trim() != "") {
+      const identifier = generateRandomIdentifier();
+      createTodoItem(
+        identifier,
+        e.target.value.trim(),
+        todoInputCheckboxEl.checked
+      );
+      todoInputCheckboxEl.checked = false;
+      clearInput(e);
+    }
+  }
+});
+
+todoInputCheckboxEl.addEventListener("change", (e) => {
+  if (todoInputCheckboxEl.checked) {
+    if (todoInputTextEl.value.trim() != "") {
+      const identifier = generateRandomIdentifier();
+      createTodoItem(
+        identifier,
+        todoInputTextEl.value.trim(),
+        todoInputCheckboxEl.checked
+      );
+      todoInputCheckboxEl.checked = false;
+      todoInputTextEl.value = "";
+    }
+  }
+});
+
+todoFilters.forEach((filter) => {
+  filter.addEventListener("click", (e) => {
+    const filterParameter = filter.classList.value.split("todo__filter--")[1];
+    console.log(filterParameter);
+    renderTodoItems(filterParameter);
+  });
+});
+
+clearCompletedBtnEl.addEventListener("click", () => {
+  todoItems = todoItems.filter((item) => item.completed == false);
+  console.log(todoItems);
+  renderTodoItems();
+  updateTodoItemsLeftParameter();
+});
+
+lightModeToggleEl.addEventListener("click", (e) => {
+  document.body.classList.toggle("night-mode");
+});
 
 // functions
 function getTodoItemsFromLocalStorage() {
-  if (localStorage.getItem("todoItems")) {
-    todoItems = JSON.parse(localStorage.getItem("todoItems"));
-    console.log(todoItems);
+  if (sessionStorage.getItem("todoItems")) {
+    todoItems = JSON.parse(sessionStorage.getItem("todoItems"));
   }
 }
 
-function renderTodoItems() {
+function renderTodoItems(filterParameter = "all") {
   let todoItemsHtml = "";
-  for (index in todoItems.reverse()) {
-    const { identifier, text, completed } = todoItems[index];
+  let filteredTodoItems = generateFilteredTodoItemsList(filterParameter);
+  for (index in filteredTodoItems) {
+    const { identifier, text, completed } = filteredTodoItems[index];
     todoItemsHtml += `
-    <div class="todo__item${completed ? " completed" : ""}">
+    <div class="todo__item${
+      completed ? " completed" : ""
+    } todo__item-${identifier}">
     <label for="todo__item--checkbox-${identifier}" class="todo__item--label">
         <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9">
         <path
@@ -48,6 +96,7 @@ function renderTodoItems() {
         id="todo__item--checkbox-${identifier}"
         class="todo__item--checkbox"${completed ? " checked" : ""}
         />
+        <div></div>
     </label>
     <input
         type="text"
@@ -73,6 +122,51 @@ function renderTodoItems() {
   `;
   }
   todoItemsContainerEl.innerHTML = todoItemsHtml;
+  // remove todo items
+  const removeTodoEl = todoItemsContainerEl.querySelectorAll(".todo__item-svg");
+  removeTodoEl.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      const identifier =
+        e.target.parentElement.classList.value.split("todo__item-")[1];
+      const newTodoItems = todoItems.filter(
+        (item) => item.identifier != identifier
+      );
+      todoItems = newTodoItems;
+      updateTodoItemsInLocalStorage();
+      getTodoItemsFromLocalStorage();
+      renderTodoItems();
+    });
+  });
+  // complete todo items
+  const completeTodoEl = document.querySelectorAll(".todo__item--checkbox");
+  completeTodoEl.forEach((checkbox) => {
+    checkbox.addEventListener("change", () => {
+      const identifier = checkbox.id.split("todo__item--checkbox-")[1];
+      const index = todoItems.findIndex(
+        (item) => item.identifier == identifier
+      );
+      todoItems[index].completed = checkbox.checked;
+      updateTodoItemsInLocalStorage();
+      getTodoItemsFromLocalStorage();
+    });
+  });
+  // update todo items text
+  const todoItemTextEl = document.querySelectorAll(".todo__item--text");
+  todoItemTextEl.forEach((textInput) => {
+    const identifier =
+      textInput.parentElement.classList.value.split("todo__item-")[1];
+    const index = todoItems.findIndex((item) => item.identifier == identifier);
+    textInput.addEventListener("change", (e) => {
+      if (e.target.value.trim() != "") {
+        todoItems[index].text = e.target.value.trim();
+        updateTodoItemsInLocalStorage();
+        getTodoItemsFromLocalStorage();
+        renderTodoItems();
+      } else {
+        e.target.value = todoItems[index].text;
+      }
+    });
+  });
 }
 
 function createTodoItem(identifier, text, completed) {
@@ -101,6 +195,23 @@ function clearInput(el) {
 }
 
 function updateTodoItemsInLocalStorage() {
-  localStorage.setItem("todoItems", JSON.stringify(todoItems));
-  renderTodoItems();
+  sessionStorage.setItem("todoItems", JSON.stringify(todoItems));
+  updateTodoItemsLeftParameter();
+}
+
+function updateTodoItemsLeftParameter() {
+  todoItemsLeftEl.innerHTML = `${
+    todoItems.filter((item) => item.completed == false).length
+  } items left`;
+}
+
+function generateFilteredTodoItemsList(filterParameter) {
+  if (filterParameter != "all") {
+    if (filterParameter == "active") {
+      return todoItems.filter((item) => item.completed == false);
+    } else {
+      return todoItems.filter((item) => item.completed == true);
+    }
+  }
+  return todoItems;
 }

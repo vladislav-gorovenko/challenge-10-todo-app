@@ -56,5 +56,5 @@ Users should be able to:
 ## Author
 
 - Frontend Mentor - [@martinideniam](https://www.frontendmentor.io/profile/martinideniam)
-- Twitter - [@VladislavGorov3](https://twitter.com/VladislavGorov3)
-- Reddit - [@martin**eden**iam](https://www.reddit.com/user/martin__eden__iam)
+- Twitter - [@vlad_webdev](https://twitter.com/vlad_webdev)
+- Reddit - [@martin_eden_iam](https://www.reddit.com/user/martin__eden__iam)
