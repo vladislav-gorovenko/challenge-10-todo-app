@@ -121,6 +121,9 @@ body.night-mode .todo__top-container {
 .todo__items-summary div {
   display: flex;
 }
+.todo__items-todos .over {
+  filter: invert(0.2);
+}
 .todo__items-todos:has(.todo__item) + .todo__items-summary {
   border-radius: 0 0 0.5rem 0.5rem;
 }

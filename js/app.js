@@ -8,6 +8,7 @@ const clearCompletedBtnEl = document.querySelector(
   ".todo__items-action--clear-completed"
 );
 const lightModeToggleEl = document.querySelector(".todo__svg");
+let dragStartIndex;
 
 // displaying all the todos from local storage, if any
 let todoItems = [];
@@ -78,7 +79,7 @@ function renderTodoItems(filterParameter = "all") {
   for (index in filteredTodoItems) {
     const { identifier, text, completed } = filteredTodoItems[index];
     todoItemsHtml += `
-    <div class="todo__item${
+    <div data-index=${index} draggable=true class="draggable todo__item${
       completed ? " completed" : ""
     } todo__item-${identifier}">
     <label for="todo__item--checkbox-${identifier}" class="todo__item--label">
@@ -167,6 +168,7 @@ function renderTodoItems(filterParameter = "all") {
       }
     });
   });
+  addEventListeners();
 }
 
 function createTodoItem(identifier, text, completed) {
@@ -214,4 +216,44 @@ function generateFilteredTodoItemsList(filterParameter) {
     }
   }
   return todoItems;
+}
+
+function addEventListeners() {
+  const draggables = document.querySelectorAll(".draggable");
+  draggables.forEach((draggable) => {
+    draggable.addEventListener("dragstart", dragStart);
+    draggable.addEventListener("dragover", dragOver);
+    draggable.addEventListener("drop", dragDrop);
+    draggable.addEventListener("dragenter", dragEnter);
+    draggable.addEventListener("dragleave", dragLeave);
+  });
+}
+
+function dragStart() {
+  dragStartIndex = +this.getAttribute("data-index");
+}
+function dragOver(e) {
+  e.preventDefault();
+}
+function dragDrop() {
+  const dragEndIndex = +this.getAttribute("data-index");
+  swapItems(dragStartIndex, dragEndIndex);
+  this.classList.remove("over");
+}
+function dragEnter() {
+  this.classList.add("over");
+}
+function dragLeave() {
+  this.classList.remove("over");
+}
+
+function swapItems(fromIndex, toIndex) {
+  const firstItem = todoItems[fromIndex];
+  const secondItem = todoItems[toIndex];
+  console.log(todoItems[fromIndex]);
+  todoItems[fromIndex] = secondItem;
+  todoItems[toIndex] = firstItem;
+  console.log(todoItems[fromIndex]);
+  updateTodoItemsInLocalStorage();
+  renderTodoItems();
 }
