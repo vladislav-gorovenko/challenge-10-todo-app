@@ -52,6 +52,13 @@
       display: flex;
     }
   }
+
+  &__items-todos {
+    .over {
+      filter: invert(0.2);
+    }
+  }
+
   &__items-todos:has(.todo__item) + .todo__items-summary {
     border-radius: 0 0 $default-border-radius $default-border-radius;
   }
