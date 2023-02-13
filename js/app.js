@@ -9,6 +9,7 @@ const clearCompletedBtnEl = document.querySelector(
 );
 const lightModeToggleEl = document.querySelector(".todo__svg");
 let dragStartIndex;
+let shadowedElement;
 
 // displaying all the todos from local storage, if any
 let todoItems = [];
@@ -169,6 +170,7 @@ function renderTodoItems(filterParameter = "all") {
     });
   });
   addEventListeners();
+  addPointerEventListeners();
 }
 
 function createTodoItem(identifier, text, completed) {
@@ -232,17 +234,21 @@ function addEventListeners() {
 function dragStart() {
   dragStartIndex = +this.getAttribute("data-index");
 }
+
 function dragOver(e) {
   e.preventDefault();
 }
+
 function dragDrop() {
   const dragEndIndex = +this.getAttribute("data-index");
   swapItems(dragStartIndex, dragEndIndex);
   this.classList.remove("over");
 }
+
 function dragEnter() {
   this.classList.add("over");
 }
+
 function dragLeave() {
   this.classList.remove("over");
 }
@@ -256,4 +262,54 @@ function swapItems(fromIndex, toIndex) {
   console.log(todoItems[fromIndex]);
   updateTodoItemsInLocalStorage();
   renderTodoItems();
+}
+
+function addPointerEventListeners() {
+  const draggables = document.querySelectorAll(".draggable");
+  draggables.forEach((draggable) => {
+    draggable.addEventListener("touchstart", (e) => touchStart(e));
+    draggable.addEventListener("touchmove", (e) => touchMove(e));
+    draggable.addEventListener("touchend", (e) => touchEnd(e));
+  });
+}
+
+function touchStart(e) {
+  [...e.changedTouches].forEach((touch) => {
+    const item = touch.target.closest(".draggable");
+    dragStartIndex = +item.getAttribute("data-index");
+  });
+}
+
+function touchMove(e) {
+  [...e.changedTouches].forEach((touch) => {
+    const element = document
+      .elementFromPoint(touch.pageX, touch.pageY)
+      .closest(".draggable");
+    if (element) {
+      if (shadowedElement != element) {
+        if (shadowedElement) {
+          console.log(shadowedElement);
+          shadowedElement.classList.remove("over");
+        }
+      }
+      shadowedElement = element;
+      element.classList.add("over");
+    } else {
+      if (shadowedElement) {
+        shadowedElement.classList.remove("over");
+      }
+    }
+  });
+}
+
+function touchEnd(e) {
+  [...e.changedTouches].forEach((touch) => {
+    const element = document
+      .elementFromPoint(touch.pageX, touch.pageY)
+      .closest(".draggable");
+    if (element) {
+      const dragEndIndex = +element.getAttribute("data-index");
+      swapItems(dragStartIndex, dragEndIndex);
+    }
+  });
 }
