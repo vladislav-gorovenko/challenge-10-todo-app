@@ -170,7 +170,7 @@ function renderTodoItems(filterParameter = "all") {
     });
   });
   addEventListeners();
-  addPointerEventListeners();
+  // addPointerEventListeners();
 }
 
 function createTodoItem(identifier, text, completed) {
@@ -262,64 +262,4 @@ function swapItems(fromIndex, toIndex) {
   console.log(todoItems[fromIndex]);
   updateTodoItemsInLocalStorage();
   renderTodoItems();
-}
-
-function addPointerEventListeners() {
-  const draggables = document.querySelectorAll(".draggable");
-  draggables.forEach((draggable) => {
-    draggable.addEventListener("touchstart", (e) => touchStart(e));
-    draggable.addEventListener("touchmove", (e) => touchMove(e));
-    draggable.addEventListener("touchend", (e) => touchEnd(e));
-  });
-}
-
-function touchStart(e) {
-  [...e.changedTouches].forEach((touch) => {
-    if (
-      touch.target.closest(".todo__item-svg") ||
-      touch.target.closest(".todo__item--label") ||
-      touch.target.closest(".todo__item--text")
-    ) {
-      console.log("ahah");
-    } else {
-      e.preventDefault();
-      document.body.classList.add("overflow-hidden");
-    }
-    const item = touch.target.closest(".draggable");
-    dragStartIndex = +item.getAttribute("data-index");
-  });
-}
-
-function touchMove(e) {
-  [...e.changedTouches].forEach((touch) => {
-    const element = document
-      .elementFromPoint(touch.pageX, touch.pageY)
-      .closest(".draggable");
-    if (element) {
-      if (shadowedElement != element) {
-        if (shadowedElement) {
-          shadowedElement.classList.remove("over");
-        }
-      }
-      shadowedElement = element;
-      element.classList.add("over");
-    } else {
-      if (shadowedElement) {
-        shadowedElement.classList.remove("over");
-      }
-    }
-  });
-}
-
-function touchEnd(e) {
-  [...e.changedTouches].forEach((touch) => {
-    const element = document
-      .elementFromPoint(touch.pageX, touch.pageY)
-      .closest(".draggable");
-    if (element) {
-      const dragEndIndex = +element.getAttribute("data-index");
-      swapItems(dragStartIndex, dragEndIndex);
-    }
-  });
-  document.body.classList.remove("overflow-hidden");
 }
