@@ -35,8 +35,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [my GITHUB](https://github.com/martinideniam/project-12-todo-app)
+- Live Site URL: [my GITHUB page](https://your-live-site-url.com)
 
 ## My process
 
@@ -47,11 +47,14 @@ Users should be able to:
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
+- HTML Drag and Drop API
+- SCSS / SASS
 
 ### What I learned
 
 - I learned how to make drag and drop functionality
-- I learned how to work with local storage
+- I learned how to work with local storage / session storage
+- I learned about touch events, however, couldn't make it work for this project
 
 ## Author
 

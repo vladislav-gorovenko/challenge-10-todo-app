@@ -16,7 +16,7 @@ document.querySelector(".todo__filter--all").classList.add("selected-filter");
 // displaying all the todos from local storage, if any
 let todoItems = [];
 getTodoItemsFromLocalStorage();
-[
+todoItems = [
   {
     identifier: "89205232-d8cf-4d52-9d5e-ac88c9ff69c9",
     text: "Complete online JavaScript course",
