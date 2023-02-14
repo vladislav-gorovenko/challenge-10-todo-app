@@ -263,3 +263,63 @@ function swapItems(fromIndex, toIndex) {
   updateTodoItemsInLocalStorage();
   renderTodoItems();
 }
+
+function addPointerEventListeners() {
+  const draggables = document.querySelectorAll(".draggable");
+  draggables.forEach((draggable) => {
+    draggable.addEventListener("touchstart", (e) => touchStart(e));
+    draggable.addEventListener("touchmove", (e) => touchMove(e));
+    draggable.addEventListener("touchend", (e) => touchEnd(e));
+  });
+}
+
+function touchStart(e) {
+  [...e.changedTouches].forEach((touch) => {
+    // e.preventDefault();
+    if (
+      touch.target.closest(".todo__item-svg") ||
+      touch.target.closest(".todo__item--label") ||
+      touch.target.closest(".todo__item--text")
+    ) {
+      console.log("");
+    } else {
+      e.preventDefault();
+    }
+    const item = touch.target.closest(".draggable");
+    dragStartIndex = +item.getAttribute("data-index");
+  });
+}
+
+function touchMove(e) {
+  [...e.changedTouches].forEach((touch) => {
+    const element = document
+      .elementFromPoint(touch.pageX, touch.pageY)
+      .closest(".draggable");
+    if (element) {
+      if (shadowedElement != element) {
+        if (shadowedElement) {
+          console.log(shadowedElement);
+          shadowedElement.classList.remove("over");
+        }
+      }
+      shadowedElement = element;
+      element.classList.add("over");
+    } else {
+      if (shadowedElement) {
+        shadowedElement.classList.remove("over");
+      }
+    }
+  });
+}
+
+function touchEnd(e) {
+  [...e.changedTouches].forEach((touch) => {
+    const element = document
+      .elementFromPoint(touch.pageX, touch.pageY)
+      .closest(".draggable");
+    if (element) {
+      const dragEndIndex = +element.getAttribute("data-index");
+      swapItems(dragStartIndex, dragEndIndex);
+    }
+  });
+}
