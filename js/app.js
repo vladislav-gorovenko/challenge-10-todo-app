@@ -16,38 +16,38 @@ document.querySelector(".todo__filter--all").classList.add("selected-filter");
 // displaying all the todos from local storage, if any
 let todoItems = [];
 getTodoItemsFromLocalStorage();
-todoItems = [
-  {
-    identifier: "89205232-d8cf-4d52-9d5e-ac88c9ff69c9",
-    text: "Complete online JavaScript course",
-    completed: true,
-  },
-  {
-    identifier: "b7b135cf-df74-49f7-8e67-62ac106018fa",
-    text: "Jog around the park 3x",
-    completed: false,
-  },
-  {
-    identifier: "8cd84f09-4161-420c-a5fe-a78345b0db3b",
-    text: "10 minutes meditation",
-    completed: false,
-  },
-  {
-    identifier: "45826332-8bbb-4d37-a456-e69a2861a2f6",
-    text: "Read for 1 hour",
-    completed: false,
-  },
-  {
-    identifier: "15332910-1c28-4cb9-8447-f14def0a48e9",
-    text: "Pick up groceries",
-    completed: false,
-  },
-  {
-    identifier: "5e6c27b8-e656-4005-9fbd-58a2b29e59fb",
-    text: "Complete Todo App on Frontend Mentor",
-    completed: false,
-  },
-];
+// todoItems = [
+//   {
+//     identifier: "89205232-d8cf-4d52-9d5e-ac88c9ff69c9",
+//     text: "Complete online JavaScript course",
+//     completed: true,
+//   },
+//   {
+//     identifier: "b7b135cf-df74-49f7-8e67-62ac106018fa",
+//     text: "Jog around the park 3x",
+//     completed: false,
+//   },
+//   {
+//     identifier: "8cd84f09-4161-420c-a5fe-a78345b0db3b",
+//     text: "10 minutes meditation",
+//     completed: false,
+//   },
+//   {
+//     identifier: "45826332-8bbb-4d37-a456-e69a2861a2f6",
+//     text: "Read for 1 hour",
+//     completed: false,
+//   },
+//   {
+//     identifier: "15332910-1c28-4cb9-8447-f14def0a48e9",
+//     text: "Pick up groceries",
+//     completed: false,
+//   },
+//   {
+//     identifier: "5e6c27b8-e656-4005-9fbd-58a2b29e59fb",
+//     text: "Complete Todo App on Frontend Mentor",
+//     completed: false,
+//   },
+// ];
 renderTodoItems();
 updateTodoItemsLeftParameter();
 
