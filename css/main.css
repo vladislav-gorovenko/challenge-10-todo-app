@@ -41,6 +41,10 @@ svg path {
   margin: auto;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 .todo__top-container {
   min-height: 25vh;
   transition: background 0.2s ease-in-out;

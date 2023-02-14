@@ -283,6 +283,7 @@ function touchStart(e) {
       console.log("ahah");
     } else {
       e.preventDefault();
+      document.body.classList.add("overflow-hidden");
     }
     const item = touch.target.closest(".draggable");
     dragStartIndex = +item.getAttribute("data-index");
@@ -320,4 +321,5 @@ function touchEnd(e) {
       swapItems(dragStartIndex, dragEndIndex);
     }
   });
+  document.body.classList.remove("overflow-hidden");
 }
