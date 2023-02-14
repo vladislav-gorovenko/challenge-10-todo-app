@@ -45,6 +45,14 @@ svg path {
   overflow: hidden;
 }
 
+.todo .todo__svg {
+  height: 26px;
+  width: 26px;
+  background: url(../images/icon-moon.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background 0.3s ease-in-out;
+}
 .todo__top-container {
   min-height: 25vh;
   transition: background 0.2s ease-in-out;
@@ -68,6 +76,13 @@ body.night-mode .todo__top-container {
   background: url(../images/bg-mobile-dark.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+}
+body.night-mode .todo .todo__svg {
+  height: 26px;
+  width: 26px;
+  background: url(../images/icon-sun.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 @media screen and (min-width: 850px) {
@@ -148,13 +163,17 @@ body.night-mode .todo__top-container {
 .todo__items-container .todo__filters-container {
   display: none;
 }
+.todo__items-container .todo__filter.selected-filter {
+  color: hsl(220deg, 98%, 61%);
+}
 .todo__input--text, .todo__item--text {
   margin-left: 1rem;
   margin-right: 1rem;
   font-family: "Josefin Sans", sans-serif;
   color: hsl(235deg, 19%, 35%);
   font-size: 1rem;
-  width: 100%;
+  flex: 1;
+  padding: 0.5rem;
 }
 .todo__input--checkbox, .todo__item--checkbox {
   -webkit-appearance: none;
@@ -170,7 +189,8 @@ body.night-mode .todo__top-container {
   border: none;
   border-radius: 50%;
   height: 1.5rem;
-  width: 1.6rem;
+  width: 1.5rem;
+  padding: 0.9rem;
   cursor: pointer;
   overflow: hidden;
   background: transparent;

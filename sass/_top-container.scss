@@ -1,4 +1,12 @@
 .todo {
+  .todo__svg {
+    height: 26px;
+    width: 26px;
+    background: url(../images/icon-moon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background 0.3s ease-in-out;
+  }
   &__top-container {
     min-height: 25vh;
     transition: background 0.2s ease-in-out;
@@ -26,6 +34,13 @@ body.night-mode {
       background: url(../images/bg-mobile-dark.jpg);
       background-repeat: no-repeat;
       background-size: cover;
+    }
+    .todo__svg {
+      height: 26px;
+      width: 26px;
+      background: url(../images/icon-sun.svg);
+      background-repeat: no-repeat;
+      background-position: center;
     }
   }
 }

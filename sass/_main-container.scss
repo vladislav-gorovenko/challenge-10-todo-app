@@ -83,6 +83,9 @@
     .todo__filters-container {
       display: none;
     }
+    .todo__filter.selected-filter {
+      color: $bright-blue;
+    }
   }
 
   &__input,
@@ -93,7 +96,8 @@
       font-family: "Josefin Sans", sans-serif;
       color: $very-dark-grayish-blue-light;
       font-size: 1rem;
-      width: 100%;
+      flex: 1;
+      padding: 0.5rem;
     }
 
     &--checkbox {
@@ -109,7 +113,8 @@
       border: none;
       border-radius: 50%;
       height: 1.5rem;
-      width: 1.6rem;
+      width: 1.5rem;
+      padding: 0.9rem;
       cursor: pointer;
       overflow: hidden;
       background: transparent;

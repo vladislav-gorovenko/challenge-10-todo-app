@@ -10,10 +10,24 @@ const clearCompletedBtnEl = document.querySelector(
 const lightModeToggleEl = document.querySelector(".todo__svg");
 let dragStartIndex;
 let shadowedElement;
+let filterParameter = "all";
+document.querySelector(".todo__filter--all").classList.add("selected-filter");
 
 // displaying all the todos from local storage, if any
 let todoItems = [];
 getTodoItemsFromLocalStorage();
+todoItems = [
+  {
+    identifier: "89205232-d8cf-4d52-9d5e-ac88c9ff69c9",
+    text: "zakhr",
+    completed: false,
+  },
+  {
+    identifier: "b7b135cf-df74-49f7-8e67-62ac106018fa",
+    text: "Vlad",
+    completed: false,
+  },
+];
 renderTodoItems();
 updateTodoItemsLeftParameter();
 
@@ -50,8 +64,9 @@ todoInputCheckboxEl.addEventListener("change", (e) => {
 
 todoFilters.forEach((filter) => {
   filter.addEventListener("click", (e) => {
-    const filterParameter = filter.classList.value.split("todo__filter--")[1];
-    console.log(filterParameter);
+    filterParameter = filter.classList.value.split("todo__filter--")[1];
+    todoFilters.forEach((filter) => filter.classList.remove("selected-filter"));
+    filter.classList.add("selected-filter");
     renderTodoItems(filterParameter);
   });
 });
