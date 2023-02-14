@@ -83,9 +83,10 @@
     .todo__filters-container {
       display: none;
     }
-    .todo__filter.selected-filter {
-      color: $bright-blue;
-    }
+  }
+
+  .todo__filter.selected-filter {
+    color: $bright-blue;
   }
 
   &__input,

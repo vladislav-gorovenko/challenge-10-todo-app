@@ -36,7 +36,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [my GITHUB](https://github.com/martinideniam/project-12-todo-app)
-- Live Site URL: [my GITHUB page](https://your-live-site-url.com)
+- Live Site URL: [my GITHUB page](https://martinideniam.github.io/project-12-todo-app/)
 
 ## My process
 

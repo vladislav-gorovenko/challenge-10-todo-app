@@ -163,7 +163,7 @@ body.night-mode .todo .todo__svg {
 .todo__items-container .todo__filters-container {
   display: none;
 }
-.todo__items-container .todo__filter.selected-filter {
+.todo .todo__filter.selected-filter {
   color: hsl(220deg, 98%, 61%);
 }
 .todo__input--text, .todo__item--text {
