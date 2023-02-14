@@ -275,13 +275,12 @@ function addPointerEventListeners() {
 
 function touchStart(e) {
   [...e.changedTouches].forEach((touch) => {
-    // e.preventDefault();
     if (
       touch.target.closest(".todo__item-svg") ||
       touch.target.closest(".todo__item--label") ||
       touch.target.closest(".todo__item--text")
     ) {
-      console.log("");
+      console.log("ahah");
     } else {
       e.preventDefault();
     }
@@ -298,7 +297,6 @@ function touchMove(e) {
     if (element) {
       if (shadowedElement != element) {
         if (shadowedElement) {
-          console.log(shadowedElement);
           shadowedElement.classList.remove("over");
         }
       }

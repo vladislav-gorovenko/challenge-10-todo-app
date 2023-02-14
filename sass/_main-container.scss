@@ -54,6 +54,9 @@
   }
 
   &__items-todos {
+    .todo__item {
+      touch-action: none;
+    }
     .over {
       filter: invert(0.2);
     }
