@@ -31,7 +31,8 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![night mode](./screenshots/screenshot-1.png)
+![day mode](./screenshots/screenshot-2.png)
 
 ### Links
 
