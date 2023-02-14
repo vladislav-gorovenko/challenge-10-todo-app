@@ -275,6 +275,7 @@ function addPointerEventListeners() {
 
 function touchStart(e) {
   [...e.changedTouches].forEach((touch) => {
+    e.preventDefault();
     const item = touch.target.closest(".draggable");
     dragStartIndex = +item.getAttribute("data-index");
   });
