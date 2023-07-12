@@ -1,64 +1,47 @@
-# Frontend Mentor - Todo app solution
+# Todo Web App
 
-This is a solution to the [Todo app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+Welcome to my todo web app repository. This project is a solution to the todo web app challenge on [Frontend Mentor](https://www.frontendmentor.io).
 
-## Table of contents
+## The Challenge
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-- [Author](#author)
+The challenge involved building an application that allowed users to:
 
-## Overview
+* View the optimal layout for the app depending on their device's screen size
+* See hover states for all interactive elements on the page
+* Add new todos to the list
+* Mark todos as complete
+* Delete todos from the list
+* Filter by all/active/complete todos
+* Clear all completed todos
+* Toggle light and dark mode
+* Drag and drop to reorder items on the list
 
-### The challenge
+## Technologies Used
 
-Users should be able to:
+This project was built using the following technologies:
 
-- View the optimal layout for the app depending on their device's screen size
-- See hover states for all interactive elements on the page
-- Add new todos to the list
-- Mark todos as complete
-- Delete todos from the list
-- Filter by all/active/complete todos
-- Clear all completed todos
-- Toggle light and dark mode
-- Drag and drop to reorder items on the list
+- HTML
+- CSS
+- JS
 
-### Screenshot
+## Live
+
+You can check out the live version of the project here -> [https://vladislav-gorovenko.github.io/challenge-10-todo-app/](https://vladislav-gorovenko.github.io/challenge-10-todo-app/).
+
+## Screenshots
 
 ![night mode](./screenshots/screenshot-1.png)
 ![day mode](./screenshots/screenshot-2.png)
 
-### Links
+## Contact Me
 
-- Solution URL: [my GITHUB](https://github.com/martinideniam/project-12-todo-app)
-- Live Site URL: [my GITHUB page](https://martinideniam.github.io/project-12-todo-app/)
+For any inquiries or feedback, feel free to get in touch with me through:
 
-## My process
+- [GitHub](https://github.com/vladislav-gorovenko)
+- [LinkedIn](https://www.linkedin.com/in/vladislavgorovenko/)
+- [FrontendMentor](https://www.frontendmentor.io/profile/martinideniam/)
+- [Telegram](https://t.me/vlad_webdev_iam)
 
-### Built with
+## Feedback
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- HTML Drag and Drop API
-- SCSS / SASS
-
-### What I learned
-
-- I learned how to make drag and drop functionality
-- I learned how to work with local storage / session storage
-- I learned about touch events, however, couldn't make it work for this project
-
-## Author
-
-- Frontend Mentor - [@martinideniam](https://www.frontendmentor.io/profile/martinideniam)
-- Twitter - [@vlad_webdev](https://twitter.com/vlad_webdev)
-- Reddit - [@martin_eden_iam](https://www.reddit.com/user/martin__eden__iam)
+If you have any feedback or suggestions, please open an issue here on [GitHub](https://github.com/vladislav-gorovenko/https://vladislav-gorovenko.github.io/challenge-10-todo-app/issues).
