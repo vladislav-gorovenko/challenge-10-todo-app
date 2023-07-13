@@ -1,3 +1,7 @@
+## Live
+
+You can check out the live version of the project here -> [https://vladislav-gorovenko.github.io/challenge-10-todo-app/](https://vladislav-gorovenko.github.io/challenge-10-todo-app/).
+
 # Todo Web App
 
 Welcome to my todo web app repository. This project is a solution to the todo web app challenge on [Frontend Mentor](https://www.frontendmentor.io).
@@ -24,10 +28,6 @@ This project was built using the following technologies:
 - CSS
 - JS
 
-## Live
-
-You can check out the live version of the project here -> [https://vladislav-gorovenko.github.io/challenge-10-todo-app/](https://vladislav-gorovenko.github.io/challenge-10-todo-app/).
-
 ## Screenshots
 
 ![night mode](./screenshots/screenshot-1.png)
@@ -38,7 +38,7 @@ You can check out the live version of the project here -> [https://vladislav-gor
 For any inquiries or feedback, feel free to get in touch with me through:
 
 - [GitHub](https://github.com/vladislav-gorovenko)
-- [LinkedIn](https://www.linkedin.com/in/vladislavgorovenko/)
+- [LinkedIn](https://www.linkedin.com/in/vladislav-gorovenko-web/)
 - [FrontendMentor](https://www.frontendmentor.io/profile/martinideniam/)
 - [Telegram](https://t.me/vlad_webdev_iam)
 
